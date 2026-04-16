@@ -1,14 +1,50 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 {% block title %}Accueil{% endblock %}
-{% block head %}
-{{ super() }}
-{% endblock %}
+
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col">
-        Hello, WebSite !
+<div class="text-center mb-5 py-4">
+    <h1 class="display-3 fw-bold mb-3" style="color: #0f172a;">Bienvenue sur Web Generator</h1>
+    <p class="lead text-muted fs-4">Générez vos fichiers de configuration Nginx simplement.</p>
+</div>
+
+<div class="row g-4 px-lg-5">
+    <div class="col-md-4">
+        <div class="card h-100 p-3">
+            <div class="card-body d-flex flex-column text-center">
+                <div class="mb-4">
+                    <h3 class="fw-bold">Serveurs Web</h3>
+                    <div class="badge bg-primary-subtle text-primary mb-3">Standard HTTP</div>
+                </div>
+                <p class="text-muted flex-grow-1">Configuration standard pour héberger vos sites statiques ou dynamiques.</p>
+                <a href="{{ url_for('list_ws') }}" class="btn btn-primary w-100 mt-auto">Gérer</a>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <div class="col-md-4">
+        <div class="card h-100 p-3">
+            <div class="card-body d-flex flex-column text-center">
+                <div class="mb-4">
+                    <h3 class="fw-bold">Reverse Proxies</h3>
+                    <div class="badge bg-info-subtle text-info mb-3">Proxy Pass</div>
+                </div>
+                <p class="text-muted flex-grow-1">Redirigez vos flux entrants vers vos services ou API internes en toute sécurité.</p>
+                <a href="{{ url_for('list_rp') }}" class="btn btn-primary w-100 mt-auto">Gérer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100 p-3">
+            <div class="card-body d-flex flex-column text-center">
+                <div class="mb-4">
+                    <h3 class="fw-bold">Load Balancers</h3>
+                    <div class="badge bg-success-subtle text-success mb-3">Upstream</div>
+                </div>
+                <p class="text-muted flex-grow-1">Répartissez la charge de trafic sur plusieurs clusters de serveurs.</p>
+                <a href="{{ url_for('list_lb') }}" class="btn btn-primary w-100 mt-auto">Gérer</a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

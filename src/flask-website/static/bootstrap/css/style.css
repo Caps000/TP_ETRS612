@@ -1,0 +1,67 @@
+:root {
+    --primary-color: #3b82f6; 
+    --nav-bg: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    --site-bg: #f1f5f9;
+    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--site-bg);
+    color: #1e293b;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    background: var(--nav-bg) !important;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -1px;
+    color: #fff !important;
+    text-transform: uppercase;
+}
+
+.navbar-brand span {
+    color: var(--primary-color);
+    margin-left: 5px;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 500;
+}
+
+.card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+footer {
+    background: white;
+    border-top: 1px solid #e2e8f0;
+}
+
+.alert {
+    border-radius: 12px;
+    border: none;
+}

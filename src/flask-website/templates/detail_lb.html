@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}Détails LB #{{ id }}{% endblock %}
+{% block breadcrumb %}
+    <a href="{{ url_for('list_lb') }}">Load Balancers</a> &gt; Détails
+{% endblock %}
+
+{% block content %}
+<div class="mb-4 d-flex justify-content-between align-items-center">
+    <h2>Configuration Nginx : Load Balancer {{ id }}</h2>
+    <a href="{{ url_for('list_lb') }}" class="btn btn-outline-secondary">Retour</a>
+</div>
+
+<div class="card bg-dark text-white shadow">
+    <div class="card-header border-secondary">
+        <small>Fichier de configuration Nginx (Load Balancer)</small>
+    </div>
+    <div class="card-body">
+        <pre class="mb-0"><code>upstream my_app_cluster {
+    server 192.168.1.10:80;
+    server 192.168.1.11:80;
+}
+
+server {
+    listen 80;
+    
+    location / {
+        proxy_pass http://my_app_cluster;
+    }
+}</code></pre>
+    </div>
+</div>
+{% endblock %}

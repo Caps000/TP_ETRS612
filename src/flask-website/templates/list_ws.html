@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block title %}Serveurs Web{% endblock %}
+{% block breadcrumb %}Serveurs Web{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-4">
+    <div class="col">
+        <h2>Liste des Serveurs Web</h2>
+    </div>
+    <div class="col text-end">
+        <a href="{{ url_for('create_ws') }}" class="btn btn-primary">+ Ajouter un Serveur</a>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nom du serveur</th>
+                    <th>Port</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for serveur in serveurs %}
+                <tr>
+                    <td>{{ serveur.id }}</td>
+                    <td>{{ serveur.server_name }}</td>
+                    <td>{{ serveur.port }}</td>
+                    <td class="text-end">
+                        <a href="{{ url_for('detail_ws', id=serveur.id) }}" class="btn btn-sm btn-info text-white">Voir</a>
+                        <a href="{{ url_for('delete_ws_action', id=serveur.id) }}" 
+                           class="btn btn-sm btn-outline-danger">
+                           Supprimer
+                        </a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="text-center text-muted py-4">Aucun serveur web configuré.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

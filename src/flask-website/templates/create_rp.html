@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block title %}Nouveau Proxy{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card p-4">
+            <h2 class="fw-bold mb-4 text-center">Ajouter un Reverse Proxy</h2>
+            <form action="{{ url_for('create_rp') }}" method="POST">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Nom d'accès (ex: /api)</label>
+                    <input type="text" class="form-control" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Cible (URL du service interne)</label>
+                    <input type="url" class="form-control" name="target" placeholder="http://127.0.0.1:8080" required>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <a href="{{ url_for('list_rp') }}" class="btn btn-light border w-50">Annuler</a>
+                    <button type="submit" class="btn btn-primary w-50">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

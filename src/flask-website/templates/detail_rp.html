@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %}Détails Proxy #{{ id }}{% endblock %}
+{% block breadcrumb %}
+    <a href="{{ url_for('list_rp') }}">Reverse Proxies</a> &gt; Détails
+{% endblock %}
+
+{% block content %}
+<div class="mb-4 d-flex justify-content-between align-items-center">
+    <h2>Configuration Nginx : Reverse Proxy {{ id }}</h2>
+    <a href="{{ url_for('list_rp') }}" class="btn btn-outline-secondary">Retour</a>
+</div>
+
+<div class="card bg-dark text-white shadow">
+    <div class="card-header border-secondary">
+        <small>Fichier de configuration Nginx (Reverse Proxy)</small>
+    </div>
+    <div class="card-body">
+        <pre class="mb-0"><code>server {
+    listen 80;
+    server_name proxy-{{ id }}.local;
+
+    location / {
+        proxy_pass http://127.0.0.1:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}</code></pre>
+    </div>
+</div>
+{% endblock %}

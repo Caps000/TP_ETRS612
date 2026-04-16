@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block title %}Nouveau Serveur Web{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card p-4">
+            <h2 class="fw-bold mb-4 text-center">Ajouter un Serveur Web</h2>
+            <form action="{{ url_for('create_ws') }}" method="POST">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Nom du serveur (server_name)</label>
+                    <input type="text" class="form-control" name="name" placeholder="ex: mon-site.local" required>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label fw-bold">Port</label>
+                        <input type="number" class="form-control" name="port" value="80" min="1" max="65535" required>
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <label class="form-label fw-bold">Dossier Racine (root)</label>
+                        <input type="text" class="form-control" name="root" placeholder="/var/www/html" required>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <a href="{{ url_for('list_ws') }}" class="btn btn-light border w-50">Annuler</a>
+                    <button type="submit" class="btn btn-primary w-50">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
